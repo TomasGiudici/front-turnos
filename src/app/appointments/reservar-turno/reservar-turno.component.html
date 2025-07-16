@@ -1,0 +1,23 @@
+<body>
+  <h2>Reserva de Turnos</h2>
+  
+  <label for="fecha">Selecciona una fecha</label>
+  <input
+    type="date"
+    [(ngModel)]="fechaSeleccionada"
+    (change)="cargarTurnos()"
+    [min]="minDate"
+  />
+  
+  <ul>
+    <li *ngFor="let turno of turnos">
+      <button
+        [disabled]="!turno.available || !puedeReservar(turno.time)"
+        (click)="reservar(turno.time)">
+        {{ turno.time }}
+      </button>
+    </li>
+  </ul>
+  
+  <a routerLink="/appointments/mis-turnos">Ver mis turnos</a>
+</body>

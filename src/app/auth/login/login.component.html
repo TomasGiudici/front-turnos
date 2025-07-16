@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h2>Iniciar Sesión</h2>
+  <label>Email</label>
+  <input type="email" formControlName="email" />
+  <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+    Ingresá un email válido.
+  </div>
+
+  <label>Contraseña</label>
+  <input type="password" formControlName="password" />
+  <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+    Ingresá tu contraseña.
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+
+  <p class="registro-link">
+    ¿No tenés cuenta? <a routerLink="/auth/register">Registrate acá</a>
+  </p>
+</form>
